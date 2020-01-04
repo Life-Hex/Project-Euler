@@ -1,0 +1,17 @@
+function multiplesOf3and5(number) {
+  // Good luck!
+
+  var arr = [];
+  for (var x=0;x<number; x++)
+  {
+    if (x % 3 == 0 || x % 5 == 0 )
+    {
+      arr.push(x);
+    }
+  }
+
+  var total = arr.reduce((x, y) =>x + y, 0);
+  return total;
+}
+
+  multiplesOf3and5(1000);
