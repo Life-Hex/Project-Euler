@@ -1,0 +1,18 @@
+function fiboEvenSum(n) {
+  // You can do it!
+  var arr1 = [1, 2]; 
+  var arr2 = [2];
+  for (var x=0; arr1.length < n; x++)
+  {
+    var value = (arr1[x]) + arr1[x+1]
+    arr1.push(value)
+    if (value % 2 == 0)
+    {
+      arr2.push(value)
+    }                  
+  }
+  var total = arr2.reduce((a, b) => a + b, 0)
+  console.log(total);
+}
+
+fiboEvenSum(10);
