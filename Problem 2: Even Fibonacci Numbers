@@ -12,7 +12,7 @@ function fiboEvenSum(n) {
     }                  
   }
   var total = arr2.reduce((a, b) => a + b, 0)
-  console.log(total);
+  return total;
 }
 
 fiboEvenSum(10);
