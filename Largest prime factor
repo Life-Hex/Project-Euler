@@ -1,0 +1,43 @@
+function largestPrimeFactor(number) {
+  // Good luck!
+
+  var arr1 = [];
+
+  function factors(n)
+  {
+    var arr = []
+    for (var x=0; x<=n; x++)
+    {
+      if (n % x == 0 )
+      {
+        arr.push(x);
+      }
+    }
+    return arr
+  }
+  
+  var test = factors(number);
+
+  console.log(test)
+  
+  
+  for (var i in test)
+  {
+    var arrFactor = factors(test[i]);
+
+    
+    
+    if (arrFactor[1] == test[i])
+    {
+      console.log(test[i])
+      console.log("shiiit")
+      arr1[0] = test[i]
+    }
+  }
+  console.log(arr1[0])
+
+  return arr1[0]
+  
+}
+
+largestPrimeFactor(13195);
