@@ -1,0 +1,35 @@
+function largestPalindromeProduct(n) {
+  // Good luck!
+  var arr1 = [0];
+
+  var numProduct = (Math.pow(10, n)) ;
+
+  console.log(numProduct)
+
+  function checkPalindrome(num)
+  {
+    var numstr = num.toString()
+    return (numstr === numstr.split("").reverse().join("") ? true : false)
+  }
+
+
+  for (var x=numProduct; x > (numProduct/2); x--)
+  {
+    for (var y=numProduct; y > (numProduct/2); y--)
+    {
+      if (checkPalindrome(x * y))
+      {
+        
+        if (x*y > arr1[0])
+        {
+          arr1[0] = (x*y)
+        }
+        
+      }
+    }
+  }
+
+  return arr1[0];
+}
+
+largestPalindromeProduct(3);
