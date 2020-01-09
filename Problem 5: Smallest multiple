@@ -1,0 +1,87 @@
+function factors(n)
+  {
+    var arr = [];
+    for (var x=1; x<=n; x++)
+    {
+      if (n % x == 0)
+      {
+        arr.push(x)
+      }
+    }
+    return arr;
+  }
+
+  function primeFactors(n)
+  {
+    var arr = [];
+    var count = 0;
+
+    
+    for(var x = 1; x<=n; x++)
+    {
+      while (factors(x)[1] == [x] && n % x == 0)
+      {
+        arr.push(x);
+        n = n/x;
+      }
+      
+      
+    }
+      
+    return arr;
+  }
+
+  function primes(n)
+  {
+    var primes = [];
+    for (var x=2; x<=n; x++)
+    {
+      if (factors(x)[1] == [x])  
+      {
+        primes.push(x)
+      }
+    }
+    return primes;
+  }
+
+
+  function smallestMult(n)
+  {
+    var prime = primes(n);
+    var arr = [];
+    var obj = {};
+    console.log(prime)
+    for(var x=n; x>=1; x--)
+    {
+      obj[x] = primeFactors(x);      
+    }
+    console.log(obj);
+    var oldLength = {2: 1};
+    var final = [...prime];
+    const allEqual = arr => arr.every(v => v === arr[0])
+    for (var i in obj)
+    {
+
+      if ((obj[i].length > 1 && allEqual(obj[i])))
+      {      
+        if (prime[prime.indexOf(obj[i][0])] == Number(obj[i][0]))
+        
+        {
+          final[prime.indexOf(obj[i][0])] = Number(i);
+
+        }
+        
+      }
+      else {
+        delete obj[i]
+      }
+    }
+    console.log(final)
+    
+    var result = final.reduce((x, y) => x * y);
+
+    return result;
+  }
+
+
+smallestMult(5);
