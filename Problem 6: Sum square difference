@@ -1,0 +1,16 @@
+function sumSquareDifference(n) {
+  // Good luck!
+  var sum = 0;
+  var square = 0;
+  for (var x=1;x<=n;x++)
+  {
+    // square.push(Math.pow(x, 2))
+    sum = sum + x
+    square = square + x * x
+  }
+
+  var total = Math.pow(sum, 2) - square;
+  return(total)
+}
+
+sumSquareDifference(20);
