@@ -1,0 +1,40 @@
+function pythagoreanTripleProduct(n)
+  {
+    let test = 0;
+    let result = 0;
+
+    for(let r = 2; r < n; r++)
+    {
+      let eq = r*r/2
+
+      let factor = factorPairs(eq)
+      
+
+      for (let i = 0; i < factor.length; i++)
+      {
+
+        if (r*r === 2 * (factor[i][0] * factor[i][1]))      
+        {   
+          var a = factor[i][0] + r;
+          var b = factor[i][1] + r;
+          var c = factor[i][0] + factor[i][1] + r;
+
+          test = a + b + c
+          result = a * b * c;
+
+          console.log(a, b, c)
+
+          if (test === n)
+          {
+            console.log("yes");
+            console.log(test);
+            console.log(a, b, c);
+            
+            return(result);
+          }
+        }        
+      }
+    }
+  }
+  
+  specialPythagoreanTriplet(1000);
