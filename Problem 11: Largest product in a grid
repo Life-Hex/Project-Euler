@@ -1,0 +1,62 @@
+function largestGridProduct(arr)
+  {
+    // Good luck!
+    var maxProduct = 0;
+    for (let i = 0; i < arr.length; i++)
+    {
+      console.log(arr);
+      
+      for (let x = 0; x < arr[i].length; x++)
+      {
+        if (arr[i] !== undefined && arr[i][x+3] !== undefined)
+        {
+          let test = [];
+          let init = 0;
+          test.push(arr[i][x], arr[i][x+1], arr[i][x+2], arr[i][x+3])
+          console.log(test)
+          init = (arr[i][x] * arr[i][x+1] * arr[i][x+2] * arr[i][x+3])
+          init > maxProduct ? maxProduct = init : null;
+          console.log(init);
+        }
+
+        
+        if (arr[i+3] !== undefined && arr[i+3][x+3]  !== undefined)
+        {
+          let test = [];
+          let init = 0;
+          test.push(arr[i][x], arr[i+1][x+1], arr[i+2][x+2], arr[i+3][x+3])
+          console.log(test)
+          init = (arr[i][x] * arr[i+1][x+1] * arr[i+2][x+2] * arr[i+3][x+3])
+          init > maxProduct ? maxProduct = init : null;
+          console.log(init);
+        }
+
+        if (arr[i+3]  !== undefined && arr[i+3][x] !== undefined)
+        {
+          let test = [];
+          let init = 0;
+          test.push(arr[i][x], arr[i+1][x], arr[i+2][x], arr[i+3][x])
+          console.log(test)
+          init = (arr[i][x] * arr[i+1][x] * arr[i+2][x] * arr[i+3][x])
+          init > maxProduct ? maxProduct = init : null;
+          console.log(init);
+        }
+
+
+        if (arr[i+3] !== undefined && arr[i+3][x-3]  !== undefined)
+        {
+          let test = [];
+          let init = 0;
+          test.push(arr[i][x], arr[i+1][x-1], arr[i+2][x-2], arr[i+3][x-3])
+          console.log(test)
+          init = (arr[i][x] * arr[i+1][x-1] * arr[i+2][x-2] * arr[i+3][x-3])
+          init > maxProduct ? maxProduct = init : null;
+          console.log(init);
+          
+        }
+      }
+      
+    }
+
+     return maxProduct;
+  }
