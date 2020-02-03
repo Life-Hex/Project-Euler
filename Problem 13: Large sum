@@ -1,0 +1,70 @@
+  function largeSum(arr) {
+    // Good luck!
+    let tempTotal = 0;
+    let tempTotal1 = 0;
+    let arrTotal = [];
+    let i = arr[0].length - 1;
+
+    for (let x = arr[0].length; x > 0; x--)
+    {
+      for (let y = 0; y < arr.length; y++) 
+      { 
+        // debugger;
+        tempTotal += Number(arr[y][i])
+        // console.log(Number(arr[y][i]));
+      }
+
+      //this is a buffer array, from the sum of the nnumbers in each column of arr
+
+      var tempStr1 = tempTotal.toString().split("");
+
+
+      // console.log(tempStr1.pop());
+
+      
+
+      //if the added numbers equal more than 1 unit
+      if (tempStr1.length > 1) 
+      {
+        //remove and return the last unit, to be added to the sum
+        arrTotal.unshift(tempStr1.pop())
+
+        //take the excesses and add them to "tempTotal", the accumulator.
+        tempTotal = Number(tempStr1.join(""))
+
+      }else{
+        arrTotal.unshift(String(tempTotal))
+        tempTotal = 0;
+      }
+
+      // console.log(arrTotal)
+      
+
+      // tempTotal1 = Number(tempStr1.join(""));
+      // console.log(tempTotal1);
+
+      if (i > 0) i = i-1;
+
+      if (x === 1 && tempStr1.length > 1)
+      {
+        arrTotal.unshift(...tempStr1)
+      }
+    }
+    
+    
+    console.log(arrTotal);
+    return Number(arrTotal.slice(0, 10).join(""));
+    
+    
+    
+      
+  }
+
+// only change code above this line
+
+const testNums = [
+  '37107287533902102798797998220837590246510135740250',
+  '46376937677490009712648124896970078050417018260538'
+];
+
+largeSum(fiftyDigitNums);
