@@ -1,0 +1,25 @@
+function latticePaths(gridSize) {
+  // Good luck!
+
+
+  function factorial(gridSize)
+  {
+      var ans = 1;
+      while (gridSize >= 1)
+      {
+        ans = ans * gridSize
+        gridSize -= 1
+      }
+      return ans
+  }
+
+  var answer = (factorial(gridSize + gridSize))/(factorial(gridSize) * factorial((gridSize+gridSize) - gridSize))
+
+
+    return(Math.round(answer))
+
+
+  // return true;
+}
+
+latticePaths(20);
