@@ -1,0 +1,36 @@
+function primeSummation(n) 
+  {
+
+
+    let arr = 0;
+    let temp = n;
+
+    for (let x = temp; x >= 2; x--)
+    {  
+      (function() 
+      {
+        // debugger;
+        const isEven = x % 2 === 0;
+        let inc = isEven ? 1 : 2;
+        let factors = [1, x];
+        temp = factors[1]
+
+        for (var check = isEven ? 2 : 3; check <= Math.sqrt(x); check += inc)
+        {
+          if (x % check !== 0) 
+          {
+            continue;
+          }
+          return;         
+        }
+        if (x === 1 || x === n) return;
+
+        arr+=x
+      })()
+    }
+    console.log(arr)
+    return arr;
+  }
+
+
+primeSummation(2000000);
