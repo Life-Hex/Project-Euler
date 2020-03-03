@@ -1,0 +1,71 @@
+  function powerDigitSum(exponent) {
+    function bigAdd(a, b)
+    {
+      let ax = a
+      let bx = b
+
+      let loop = ax.length > bx.length ? ax.length-1 : bx.length-1
+      let temp = 0;
+      let res = [];
+      let total = 0;
+      let total2 = 0;
+
+
+      
+      for (let i = loop; i >= 0; i--)
+      {
+
+        total = (String(total2 + (Number(ax[i]) || 0) + (Number(bx[i]) || 0))).split("")
+        total2 = 0;
+        
+        // console.log((Number(ax[i]) || 0));
+        // console.log(total);
+        
+        
+        if (i == 0)
+        {
+          res.unshift(...total)
+          return(res);
+          
+        }
+
+        if (total.length > 1)
+        {
+          res.unshift(total.pop())
+          total2 += Number(total.join(""))
+        }else{
+          res.unshift(...total)
+          total2 = 0;
+        }
+          
+
+        
+
+        // console.log("total2", total2);
+        // console.log("res", res);
+        
+        
+        
+      }
+
+      return res
+    }
+
+    let arr = 1;
+    let sum = 0;
+    let temp = [2];
+    for (exponent;sum < exponent-1;sum++)
+    {
+      // debugger
+      arr = bigAdd(temp, temp)
+      // console.log(int);
+      
+      temp = arr
+    }
+    // console.log(arr)
+
+    return(arr.reduce((x, y) => Number(x) + Number(y)));
+
+}
+
+powerDigitSum(15);
