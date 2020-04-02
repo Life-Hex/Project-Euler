@@ -1,0 +1,108 @@
+function countit(n)
+  {
+    const store = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+     "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+
+    const store2 = ["zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety", "hundred"]
+
+    let customStore = store.slice(0, 10)
+
+    const sample = String(n).split("")
+
+    const arr = []
+
+    const checkTeen = (i) => 
+    {      
+      let res = store[Number(sample[i] + sample[i+1])]
+
+      if (sample[i+1] == undefined)
+        return store[Number(sample[i])]
+
+      return res
+      
+    }
+
+    const checkTy = (i) =>
+    {
+      let res = store2[Number(sample[i])]
+      return res
+    }
+
+    const checkHund = (i) =>
+    {
+      
+      let res = n % 100 == 0 ? `${customStore[Number(sample[i])]}hundred` : `${customStore[Number(sample[i])]}hundredand`
+      return res
+    }
+
+    const checkThou = (i) =>
+    {
+      if (4 + i == sample.length)
+      {
+        let res = `${customStore[Number(sample[i])]}thousand`
+        return res
+      }
+
+      if (5 + i == sample.length)
+      {
+        
+        
+        let check = checkTeen(i) == undefined ? checkTy(i) + checkTeen(i+1) : checkTeen(i)
+        let res = `${check}thousand`
+        return res
+      }
+    } 
+
+    for (let i = 0; i < (sample.length); i++) //starts from 0 because there is an actual "zero" in the array
+    {
+      // debugger
+      
+      if (Number(sample[i]) == 0)
+        continue
+
+      if (5 + i == sample.length || 4 + i == sample.length)
+      {
+        arr.push(checkThou(i))
+
+        if (5 + i == sample.length)
+          i++
+        
+        continue
+      }
+
+      if (3 + i == sample.length)
+      {
+        arr.push(checkHund(i))
+        continue
+      }
+        
+
+      if (Number(sample[i]+sample[i+1]) < 20 && i - sample.length < 2)//
+      {
+        arr.push(checkTeen(i))
+        return [arr.reduce((x,y) => x+y)]
+      }
+
+      if (2 + i == sample.length)
+        arr.push(checkTy(i))
+
+      if (1 + i == sample.length)
+        arr.push(checkTeen(i))
+    }
+
+      return [arr.reduce((x,y) => x+y)]
+
+  }
+  
+  function numberLetterCounts(n)
+  {
+    let arr = []
+    for (let i = 1; i<=n; i++)
+    {
+      arr.push(countit(i))
+    }
+    // return arr
+    return arr.reduce((x, y)=> x+y).length
+  }
+
+numberLetterCounts(5);
