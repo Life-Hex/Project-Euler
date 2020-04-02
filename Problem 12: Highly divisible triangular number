@@ -1,0 +1,42 @@
+function divisibleTriangleNumber(n) {
+
+  function getFactors(n)
+  {
+    const isEven = n % 2 === 0;
+    let inc = isEven ? 1 : 2;
+    let factors = [1, n]
+
+    for (var check = isEven ? 2 : 3; check <= Math.sqrt(n); check += inc)
+    {
+      if (n % check !== 0) continue;
+      
+      factors.push(check)
+      var test = n / check;
+
+      if(test !== check)
+      {
+        factors.push(test)
+      }
+    }
+    return factors;
+
+  }
+
+    let i = 0;
+    let test = 0;
+
+    for (let x = 1; x < 76576500; x++)
+    {  
+
+      i = (x * (x + 1))/2; // This is the xth prime number, styllised as i
+      
+      if (getFactors(i).length >= n)
+      {
+        console.log(getFactors(i));
+        return i;
+      }
+    }
+    
+  }
+
+divisibleTriangleNumber(500);
