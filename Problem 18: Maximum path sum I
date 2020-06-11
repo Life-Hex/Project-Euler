@@ -1,0 +1,56 @@
+function maximumPathSumI(triangle) {
+  // Good luck!
+
+  var res = triangle[0][0]
+  let place = 0;
+  let res2 = []
+  res2.push(triangle[0][0])
+  for (let i=0; i<triangle.length; i++)
+  {
+    
+    
+    for (let t=place; t<triangle[i].length; t++)
+    {
+      if (triangle[i][t] == 0 )
+        continue;
+
+      if (triangle[i+1] != undefined)
+      {
+        console.log(triangle[i+1][t], triangle[i+1][t+1])
+        let trilow = 0;
+
+        if (triangle[i+1][t] > triangle[i+1][t+1])
+        {
+          trilow = triangle[i+1][t]
+          res2.push(trilow)
+          place=t
+
+        }  else {
+          trilow = triangle[i+1][t+1]
+          res2.push(trilow)
+
+          place=t+1
+        }
+      
+      console.log(trilow)
+      res+=trilow
+
+      t = triangle[i].length
+      continue;
+      }
+    }
+  }
+  console.log(res)
+  console.log(res2)
+
+  return res;
+  }
+ 
+const testTriangle = [[3, 0, 0, 0],
+                      [7, 4, 0, 0],
+                      [2, 4, 6, 0],
+                      [8, 5, 9, 3]];
+
+
+
+maximumPathSumI(numTriangle);
