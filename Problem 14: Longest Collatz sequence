@@ -1,0 +1,50 @@
+function longestCollatzSequence(limit) {
+    // Good luck!
+  
+    let arr = [];
+    let arrayLen = 0;
+    let n = limit;
+    let winner = 0;
+    
+    while (n > 2)
+    {
+      // console.log("nice");
+      let x = n;
+       
+      while (x > 1)
+      {
+        if (x % 2 == 0)
+        {
+          x = x/2
+          arr.push(x)
+          // console.log(x);
+          
+        }
+
+        if (x==1)
+          continue;
+
+
+        if (x % 2 !== 0)
+        {
+          x = (3 * x) + 1
+          arr.push(x)
+          // console.log(x);
+          
+        } 
+      }      
+  
+      if (arr.length > arrayLen)
+      {
+        arrayLen = arr.length;
+        winner = n;
+      }
+  
+      arr = [];
+      n--;  
+    }
+       
+    return winner;
+  }
+  
+  longestCollatzSequence(14);
